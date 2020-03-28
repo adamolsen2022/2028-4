@@ -1,0 +1,79 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>2028-4</title>
+<style>
+.correct{
+  background:lime;
+}
+
+.incorrect{
+  background:red;
+}
+</style>
+</head>
+<body translate="no">
+<h1 class="heading">Sink the 8-ball last!<h1>
+<div class="container">
+<audio class="audio" id="myAudio" controls>
+<source src="https://adamolsen2022.github.io/2028-4/billiards+2.mp3" type="audio/mpeg">
+Your browser does not support the audio tag.
+</audio>
+<img class="image" src="https://adamolsen2022.github.io/2028-4/poolBalls.jpg" alt="poolBalls" style="position:absolute;top:0px;left:0px;" />
+<input style="position:absolute; top:100px;left:330px" size="2" data-correct='9'>
+<input style="position:absolute; top:220px;left:260px" size="2" data-correct='7'>
+<input style="position:absolute; top:210px;left:370px" size="2" data-correct='12'>
+<input style="position:absolute; top:555px;left:330px" size="2" data-correct='13'>
+<input style="position:absolute; top:320px;left:340px" size="2" data-8ball='8'>
+<input style="position:absolute; top:315px;left:450px" size="2" data-correct='1'>
+<input style="position:absolute; top:325px;left:180px" size="2" data-correct='15'>
+<input style="position:absolute; top:560px;left:195px" size="2" data-correct='2'>
+<input style="position:absolute; top:550px;left:50px" size="2" data-correct='11'>
+<input style="position:absolute; top:550px;left:460px" size="2" data-correct='4'>
+<input style="position:absolute; top:530px;left:600px" size="2" data-correct='5'>
+<input style="position:absolute; top:420px;left:130px" size="2" data-correct='6'>
+<input style="position:absolute; top:425px;left:265px" size="2" data-correct='10'>
+<input style="position:absolute; top:425px;left:385px" size="2" data-correct='3'>
+<input style="position:absolute; top:435px;left:540px" size="2" data-correct='14'>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script id="rendered-js">
+console.clear();
+
+$("input").change(onChange);
+
+var n = document.getElementsByClassName("correct");
+x = document.getElementById("myAudio");
+function onChange(evt) {
+  let correct = $(this).data("correct");
+  let eightball = $(this).data("8ball");
+  let response = $(this).val();
+  console.log(correct,response,eightball)
+  if (correct == response) {
+    $(this)
+      .removeClass("incorrect")
+      .addClass("correct")
+      console.log(n)
+      x.play();
+  } else {
+    $(this)
+      .removeClass("correct")
+      .addClass("incorrect");
+  }
+  if (eightball == response) {
+    if (n.length == 14) {
+      $(this)
+        .addClass("correct")
+        .removeClass("incorrect")
+    } else {
+      $(this)
+        .removeClass("correct")
+        .addClass("incorrect")
+    }
+  }
+}
+    </script>
+</body>
+</html>
